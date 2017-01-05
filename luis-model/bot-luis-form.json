@@ -1,0 +1,196 @@
+{
+  "luis_schema_version": "1.3.0",
+  "name": "bot-luis-form",
+  "desc": "",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "cancel"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "schedule"
+    }
+  ],
+  "entities": [
+    {
+      "name": "carType"
+    },
+    {
+      "name": "name"
+    },
+    {
+      "name": "phone"
+    },
+    {
+      "name": "service"
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "bing_entities": [
+    "datetime"
+  ],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "i would like to schedule a test drive",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "service",
+          "startPos": 6,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "i would like to schedule a test drive for toyota tomorrow",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "carType",
+          "startPos": 9,
+          "endPos": 9
+        },
+        {
+          "entity": "service",
+          "startPos": 6,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "i want to do a test drive on sunday",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "service",
+          "startPos": 5,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "i want to do a test drive for seat leon next week, please call me on 0542040400",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "carType",
+          "startPos": 8,
+          "endPos": 9
+        },
+        {
+          "entity": "phone",
+          "startPos": 17,
+          "endPos": 17
+        },
+        {
+          "entity": "service",
+          "startPos": 5,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "my name is ami, and i would like do to a test drive for subaru on tuesday. my phone number is 0542233998. thanks",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "carType",
+          "startPos": 15,
+          "endPos": 15
+        },
+        {
+          "entity": "phone",
+          "startPos": 23,
+          "endPos": 23
+        },
+        {
+          "entity": "service",
+          "startPos": 12,
+          "endPos": 13
+        },
+        {
+          "entity": "name",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "hi my name is danny, can you get back to my on my phone regarding a test drive for toyota?",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "carType",
+          "startPos": 20,
+          "endPos": 20
+        },
+        {
+          "entity": "service",
+          "startPos": 17,
+          "endPos": 18
+        },
+        {
+          "entity": "name",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "i want to schedule a test drive for tomorrow",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "service",
+          "startPos": 5,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "i want a test drive on monday",
+      "intent": "schedule",
+      "entities": [
+        {
+          "entity": "service",
+          "startPos": 3,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "i want to cancel my test drive that supposed to be on monday",
+      "intent": "cancel",
+      "entities": [
+        {
+          "entity": "service",
+          "startPos": 5,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "hi, my name is dana and i want to cancel a test drive that was scheduled for tomorrow",
+      "intent": "cancel",
+      "entities": [
+        {
+          "entity": "service",
+          "startPos": 12,
+          "endPos": 13
+        },
+        {
+          "entity": "name",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    }
+  ]
+}

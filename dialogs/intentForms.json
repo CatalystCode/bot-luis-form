@@ -1,0 +1,57 @@
+{
+	"intents": {
+		"schedule": ["service", "time", "carType", "name", "phone", "age", "location"],
+		"cancel": ["service", "time", "name"]
+	},
+	"fields": {
+			"time": {
+				"type": "time",
+				"luisType": "builtin.datetime.date",
+				"prompt": "when?"
+			},
+			"service": {
+				"type": "choice",
+				"prompt": "select a service:",
+				"options": [ 
+					{
+						"title": "test drive", 
+						"value": "testDrive"
+					},
+					{
+						"title": "cancel an appoinment", 
+						"value": "cancel"
+					}
+				]
+			},
+			"carType": {
+				"type": "choice",
+				"prompt": "select a car:",
+				"options": [ 
+					{
+						"title": "Toyota Prius", 
+						"value": "tprius"
+					},
+					{
+						"title": "Seat Leon", 
+						"value": "sleon"
+					}
+				]
+			},
+			"name": {
+				"type": "text",
+				"prompt": "what's your name?"
+			},
+			"phone": {
+				"type": "text",
+				"prompt": "what's your phone number?"
+			},
+			"age": {
+				"type": "number",
+				"prompt": "what's your age?"
+			},
+			"location": {
+				"type": "location",
+				"prompt": "use the share botton to share your location or type your city name"
+			}
+	}
+}

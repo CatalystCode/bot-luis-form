@@ -1,0 +1,46 @@
+{
+  "name": "bot-luis-form",
+  "version": "1.0.0",
+  "description": "bot-luis-form sample",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CatalystCode/bot-luis-form.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CatalystCode/bot-luis-form/issues"
+  },
+  "engines": {
+    "node": "4.4.7",
+    "npm": "3.8.3"
+  },
+  "homepage": "https://github.com/CatalystCode/bot-luis-form#readme",
+  "dependencies": {
+    "azure-storage": "^1.4.0",
+    "botbuilder": "3.4.4",
+    "chai": "^3.5.0",
+    "documentdb": "^1.10.0",
+    "express": "^4.14.0",
+    "extend": "^3.0.0",
+    "jsep": "^0.3.0",
+    "line-reader": "^0.4.0",
+    "mocha": "^3.2.0",
+    "moment": "^2.17.0",
+    "moments": "0.0.2",
+    "mstranslator": "^2.1.0",
+    "nconf": "^0.8.4",
+    "promise": "^7.1.1",
+    "request": "^2.74.0",
+    "request-promise": "^4.1.1",
+    "restify": "^4.3.0",
+    "strformat": "0.0.7",
+    "superagent": "^3.1.0",
+    "underscore": "^1.8.3",
+    "uuid": "^3.0.1"
+  }
+}
