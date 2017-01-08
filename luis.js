@@ -1,7 +1,9 @@
 var request = require('request-promise');
 var util = require('util');
 
-var luisUrlTemplate = "https://api.projectoxford.ai/luis/v2.0/apps/6bbb97ee-7727-4651-aa22-f6ec704075d0?subscription-key=b46ebba7b9434807af2bb27de4719940&verbose=true&q=%s";
+// replace LUIS endpoint with your own
+var luisEndpoint = 'https://api.projectoxford.ai/luis/v2.0/apps/6bbb97ee-7727-4651-aa22-f6ec704075d0?subscription-key=b46ebba7b9434807af2bb27de4719940&verbose=true';
+var luisUrlTemplate = `${luisEndpoint}&q=%s`;
 
 function query(text) {
 	return new Promise((resolve, reject) => {

@@ -1,6 +1,6 @@
 {
 	"intents": {
-		"schedule": ["service", "time", "carType", "name", "phone", "age", "location"],
+		"schedule": ["service", "time", "carType", "name", "phone", "age"],
 		"cancel": ["service", "time", "name"]
 	},
 	"fields": {
@@ -48,10 +48,6 @@
 			"age": {
 				"type": "number",
 				"prompt": "what's your age?"
-			},
-			"location": {
-				"type": "location",
-				"prompt": "use the share botton to share your location or type your city name"
 			}
 	}
 }

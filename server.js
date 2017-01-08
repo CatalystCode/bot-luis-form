@@ -1,4 +1,3 @@
-var path = require('path');
 var express = require('express');
 var builder = require('botbuilder');
 var fs = require('fs');
@@ -12,10 +11,10 @@ var dialogs = require('./dialogs');
 var connector = new builder.ChatConnector();
 var bot = new builder.UniversalBot(connector);
 
-dialogs.bind({ bot });
+dialogs.bind(bot);
 app.post('/api/messages', connector.listen());
 
-app.listen(port, function () {
+app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
