@@ -1,6 +1,6 @@
 # BOT-LUIS-FORM Model
 
-This file is the export of the sample LUIS application.
+This [bot-luis-form.json](bot-luis-form.json) file is the export of the sample LUIS application.
 It defines two intents `schedule` and `cancel` and a number of entities that can be extracted from the user's text:
 
 * `carType`- the type of the car to test
