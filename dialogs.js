@@ -77,9 +77,9 @@ function bind(bot) {
 
 			var formString = '';
 			Object.keys(args.form).forEach(key => {
-				formString += `${key}: ${args.form[key]} \r\n<br/>`;
+				formString += `${key}: ${args.form[key]} <br/>`;
 			});
-			session.send(`Form: \r\n<br/>${formString}\r\n<br/>`);
+			session.send(`Form: <br/>${formString}<br/>`);
 
 			// TODO: implement request processing... 
 			return next();

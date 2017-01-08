@@ -1,6 +1,5 @@
 var express = require('express');
 var builder = require('botbuilder');
-var fs = require('fs');
 var port = process.env.PORT || 3978;
 var app = express();
 
@@ -17,5 +16,3 @@ app.post('/api/messages', connector.listen());
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-module.exports = app;
