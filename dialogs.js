@@ -13,27 +13,45 @@ function bind(bot) {
 
 	intents.onDefault(session => {
 			session.send(`Welcome to the automobile bot! This is a sample bot that can be used as a reference for completing missing fields that were not resolved by LUIS.`);
-			session.beginDialog('/default');
+			session.beginDialog('/loop');
 		}
 	);
 
 	// main loop- ask for text, process intent and start over again
-	bot.dialog('/default', [
+	bot.dialog('/loop', [
 
 		// ask for input
 		session => {
 			builder.Prompts.text(session, 'How can I help?');
 		},
 
-		// get text and process intent
-		(session, args) => {
-			var status = args.response;
-			console.log(`user's status: '${status}'`);
+		// get text, call LUIS to extract intent and entities, 
+		// prompt user to fill in missing fields
+		(session, args, next) => {
+
+			var text = args.response;
+			console.log(`user's text: '${text}'`);
 			session.sendTyping();
 
-			return luis.query(status)
+			return luis.query(text)
 				.then(luisResult => {
-					return session.beginDialog('/processIntent', { luisResult });
+					const intent = luisResult.topScoringIntent.intent;
+					console.log(`processing resolved intent: ${intent}`);
+
+					// prepare fields list
+					var form = prepareForm(intent);
+			
+					// update field with LUIS result if available
+					form.forEach(field => {
+						luisResult.entities.forEach(entity => {
+							if (entity.type === field.name || entity.type === field.luisType) {
+								field.luisEntity = entity;
+							}
+						});
+					});
+
+					// collect missing fields
+					return session.beginDialog('/collectFormData', { form });
 				})
 				.catch(err => {
 					console.error(`error processing intent: ${err.message}`);
@@ -42,49 +60,23 @@ function bind(bot) {
 				});
 		},
 
-		// start over again
-		session => {
-			return session.replaceDialog('/default');
-		}
-	]);
+		// get filled-in form and process the request
+		(session, args) => {
 
-
-	bot.dialog('/processIntent', [
-		(session, args, next) => {
-			const luisResult = args.luisResult;
-			const intent = luisResult.topScoringIntent.intent
-
-			console.log(`processing resolved intent: ${intent}`);
-
-			// prepare fields list
-			var form = prepareForm(intent);
-	
-			form.forEach(field => {
-				luisResult.entities.forEach(entity => {
-					if (entity.type === field.name || entity.type === field.luisType) {
-						field.luisEntity = entity;
-					}
-				});
-			});
-
-			return session.beginDialog('/collectFormData', { form });
-		},
-
-		(session, args, next) => {
 			session.userData.form = args.form;
 			session.send('processing request..');
 
+			// TODO: implement request processing... 
+			// in this case just showing the filled-in form
 			var formString = '';
 			Object.keys(args.form).forEach(key => {
 				formString += `${key}: ${args.form[key]} <br/>`;
 			});
 			session.send(`Form: <br/>${formString}<br/>`);
 
-			// TODO: implement request processing... 
-			return next();
-		},
-		(session, args, next) => {
-			session.endDialog('bye bye');
+			// start over again
+			session.send('bye bye');
+			return session.replaceDialog('/loop');
 		}
 	]);
 
