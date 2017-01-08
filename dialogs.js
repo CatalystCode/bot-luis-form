@@ -80,6 +80,7 @@ function bind(bot) {
 		}
 	]);
 
+	// collect form data dialog
 	bot.dialog('/collectFormData', [
 
 		// prompt for field value
