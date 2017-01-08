@@ -12,8 +12,7 @@ function bind(bot) {
 	bot.dialog('/', intents);
 
 	intents.onDefault(session => {
-			session.send(`Welcome to the automobile bot! 
-										This is a sample bot that can be used as a reference for completing missing fields that were not resolved by LUIS.`);
+			session.send(`Welcome to the automobile bot! This is a sample bot that can be used as a reference for completing missing fields that were not resolved by LUIS.`);
 			session.beginDialog('/default');
 		}
 	);
