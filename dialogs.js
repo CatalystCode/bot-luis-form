@@ -17,7 +17,7 @@ function bind(bot) {
 		}
 	);
 
-	// main loop- ask for text, process intent and start over again
+	// main loop- ask for text, process intent and start over 
 	bot.dialog('/loop', [
 
 		// ask for input
@@ -74,7 +74,7 @@ function bind(bot) {
 			});
 			session.send(`Form: <br/>${formString}<br/>`);
 
-			// start over again
+			// start over 
 			session.send('bye bye');
 			return session.replaceDialog('/loop');
 		}
